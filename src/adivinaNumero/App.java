@@ -16,16 +16,18 @@ public class App {
 		int miNumero = 0;
 		int intentos = 0;
 
-		System.out.println(numeroSecreto);
+		//System.out.println(numeroSecreto);
+		
+		try {
+			Process pr = rt.exec("espeak -ves -s 120 -f /home/trugulum/numero");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		do {
 			
-			try {
-				Process pr = rt.exec("espeak -ves -s 150 -f /home/trugulum/numero");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 			//System.out.println("Introduce un número entre 1 y 10");
 			System.out.println("Llevas " + intentos + " intentos.");
 			miNumero = scanner.nextInt();
@@ -34,7 +36,7 @@ public class App {
 			if (miNumero < numeroSecreto) {
 				//System.out.println("Demasiado bajo. Sigue intentándolo");
 				try {
-					Process pr = rt.exec("espeak -ves -s 150 -f /home/trugulum/bajo");
+					Process pr = rt.exec("espeak -ves -s 180 -f /home/trugulum/bajo");
 					Thread.sleep(5000);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -44,16 +46,23 @@ public class App {
 			} else if (miNumero > numeroSecreto) {
 				//System.out.println("Demasiado alto. Sigue intentándolo");
 				try {
-					Process pr = rt.exec("espeak -ves -s 150 -f /home/trugulum/alto");
-					Thread.sleep(5000);
+					Process pr = rt.exec("espeak -ves -s 180 -f /home/trugulum/alto");
+					Thread.sleep(3000);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 
-		} while (miNumero != numeroSecreto && intentos <= 5);
-		System.out.println("Enhorabuena, has acertado el número en " + intentos + " intentos");
+		} while (miNumero != numeroSecreto && intentos < 5);
+		//System.out.println("Enhorabuena, has acertado el número en " + intentos + " intentos");
+		try {
+			Process pr = rt.exec("espeak -ves -s 180 -f /home/trugulum/acierto");
+			Thread.sleep(3000);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.exit(0);
 
 	}
