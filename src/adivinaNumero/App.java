@@ -1,6 +1,7 @@
 package adivinaNumero;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,6 +12,7 @@ public class App {
 		Scanner scanner = new Scanner(System.in);
 		Random random = new Random();
 		Runtime rt = Runtime.getRuntime();
+		ArrayList<Integer> usados = new ArrayList<Integer>();
 		
 		int numeroSecreto = random.nextInt(10) + 1;
 		int miNumero = 0;
@@ -19,7 +21,7 @@ public class App {
 		//System.out.println(numeroSecreto);
 		
 		try {
-			Process pr = rt.exec("espeak -ves -s 120 -f /home/trugulum/numero");
+			Process pr = rt.exec("espeak -ves -s 180 -f /home/trugulum/numero");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -30,8 +32,10 @@ public class App {
 			
 			//System.out.println("Introduce un número entre 1 y 10");
 			System.out.println("Llevas " + intentos + " intentos.");
+			System.out.println("Números que has usado: " + usados);
 			miNumero = scanner.nextInt();
 			intentos++;
+			usados.add(miNumero);
 
 			if (miNumero < numeroSecreto) {
 				//System.out.println("Demasiado bajo. Sigue intentándolo");
