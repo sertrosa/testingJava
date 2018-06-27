@@ -13,11 +13,11 @@ public class Maths {
 	private double trianguloAlaB;
 	private double trianguloBaseB;
 
-	public void resolve(double A, double B, double c, double ala, double base) {
+	public void resolveABc(double A, double B, double c, double ala, double base) {
 		this.A = A;
 		this.B = B;
 		C = 180 - A - B;
-		a = (c * Math.sin(Math.toRadians(A))) / Math.sin(Math.toRadians(B));
+		a = (c * Math.sin(Math.toRadians(A))) / Math.sin(Math.toRadians(C));
 		b = (a * Math.sin(Math.toRadians(B))) / Math.sin(Math.toRadians(A));
 		this.c = c;
 

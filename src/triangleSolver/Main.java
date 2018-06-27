@@ -1,12 +1,28 @@
 package triangleSolver;
 
+import java.util.Scanner;
+
 public class Main {
 
 	public static void main(String[] args) {
 
 		Maths triangle = new Maths();
+		@SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
 		
-		triangle.resolve(60, 30, 151, 100, 200);
+		System.out.println("Introduce los grados del ángulo A");
+		double A = scanner.nextDouble();
+		System.out.println("Introduce los grados del ángulo B");
+		double B = scanner.nextDouble();
+		System.out.println("Introduce la medida de c");
+		double c = scanner.nextDouble();
+		System.out.println("Introduce la medida del ala de la bandeja");
+		double alto = scanner.nextDouble();
+		System.out.println("Introduce la medida de la base de la bandeja");
+		double base = scanner.nextDouble();
+		System.out.println("");
+		
+		triangle.resolveABc(A, B, c, alto, base);
 		
 		System.out.println("A: " + triangle.getA() + " grados");
 		System.out.println("B: " + triangle.getB() + " grados");
